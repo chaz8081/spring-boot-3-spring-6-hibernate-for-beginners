@@ -10,25 +10,16 @@ import com.chaz8080.springcoredemo.common.Coach;
 @RestController
 public class DemoController {
     private Coach myCoach;
-    private Coach anotherCoach;
 
     @Autowired
-    public DemoController(
-            @Qualifier("cricketCoach") Coach myCoach,
-            @Qualifier("cricketCoach") Coach anotherCoach) {
+    public DemoController(@Qualifier("cricketCoach") Coach myCoach) {
         System.out.println("In constructor: " + getClass().getSimpleName());
         this.myCoach = myCoach;
-        this.anotherCoach = anotherCoach;
     }
 
     @GetMapping("/dailyWorkout")
     public String getDailyWorkout() {
         return myCoach.getDailyWorkout();
-    }
-
-    @GetMapping("/check")
-    public String check() {
-        return "Comparing beans: myCoach == anotherCoach, " + (this.myCoach == this.anotherCoach);
     }
 
 }
