@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages = {
 		"com.chaz8080.springcoredemo",
-		"com.chaz8080.util"
 })
 public class SpringcoredemoApplication {
 
