@@ -23,7 +23,7 @@ public class CruddemoApplication {
 			// createStudent(studentDAO);
 			// createMultipleStudents(studentDAO);
 			// readStudent(studentDAO, 3);
-			List<Student> students = readStudents(studentDAO);
+			List<Student> students = readStudentsByLastName(studentDAO, "Birds");
 			System.out.println("\n\n\n");
 			for (Student student : students) {
 				System.out.println(student);
@@ -33,6 +33,10 @@ public class CruddemoApplication {
 
 	private List<Student> readStudents(StudentDAO studentDAO) {
 		return studentDAO.findAll();
+	}
+
+	private List<Student> readStudentsByLastName(StudentDAO studentDAO, String lastName) {
+		return studentDAO.findByLastName(lastName);
 	}
 
 	private void readStudent(StudentDAO studentDAO, Integer id) {
