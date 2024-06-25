@@ -21,14 +21,37 @@ public class CruddemoApplication {
 	CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
 			// createStudent(studentDAO);
-			// createMultipleStudents(studentDAO);
+			createMultipleStudents(studentDAO);
 			// readStudent(studentDAO, 3);
-			List<Student> students = readStudentsByLastName(studentDAO, "Birds");
-			System.out.println("\n\n\n");
-			for (Student student : students) {
-				System.out.println(student);
-			}
+			// List<Student> students = readStudentsByLastName(studentDAO, "Birds");
+			// System.out.println("\n\n\n");
+			// for (Student student : students) {
+			// System.out.println(student);
+			// }
+
+			// System.out.println("Updating Student:");
+			// Student student = readStudent(studentDAO, 3);
+			// student.setFirstName("Jay");
+
+			// updateStudent(studentDAO, student);
+			// System.out.println("Updated Student: ");
+			// Student updatedStudent = readStudent(studentDAO, 3);
+
+			// deleteStudent(studentDAO, 4);
+			// deleteStudents(studentDAO);
 		};
+	}
+
+	private void deleteStudents(StudentDAO studentDAO) {
+		System.out.println("Deleted: " + studentDAO.deleteAll());
+	}
+
+	private void deleteStudent(StudentDAO studentDAO, Integer id) {
+		studentDAO.delete(id);
+	}
+
+	private void updateStudent(StudentDAO studentDAO, Student student) {
+		studentDAO.updateStudent(student);
 	}
 
 	private List<Student> readStudents(StudentDAO studentDAO) {
@@ -39,9 +62,10 @@ public class CruddemoApplication {
 		return studentDAO.findByLastName(lastName);
 	}
 
-	private void readStudent(StudentDAO studentDAO, Integer id) {
+	private Student readStudent(StudentDAO studentDAO, Integer id) {
 		Student student = studentDAO.findById(id);
 		System.out.println("\n\n\n" + student + "\n\n\n");
+		return student;
 	}
 
 	private void createMultipleStudents(StudentDAO studentDAO) {
