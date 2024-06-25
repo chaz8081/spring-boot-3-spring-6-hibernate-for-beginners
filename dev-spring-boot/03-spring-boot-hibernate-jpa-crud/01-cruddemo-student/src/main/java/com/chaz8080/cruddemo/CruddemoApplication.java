@@ -1,5 +1,7 @@
 package com.chaz8080.cruddemo;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,13 +22,22 @@ public class CruddemoApplication {
 		return runner -> {
 			// createStudent(studentDAO);
 			// createMultipleStudents(studentDAO);
-			printStudent(studentDAO, 3);
+			// readStudent(studentDAO, 3);
+			List<Student> students = readStudents(studentDAO);
+			System.out.println("\n\n\n");
+			for (Student student : students) {
+				System.out.println(student);
+			}
 		};
 	}
 
-	private void printStudent(StudentDAO studentDAO, Integer id) {
+	private List<Student> readStudents(StudentDAO studentDAO) {
+		return studentDAO.findAll();
+	}
+
+	private void readStudent(StudentDAO studentDAO, Integer id) {
 		Student student = studentDAO.findById(id);
-		System.out.println(student);
+		System.out.println("\n\n\n" + student + "\n\n\n");
 	}
 
 	private void createMultipleStudents(StudentDAO studentDAO) {
